@@ -1,7 +1,7 @@
 # Template file for 'libXft'
 pkgname=libXft
 version=2.3.8
-revision=1
+revision=2
 build_style=gnu-configure
 hostmakedepends="pkg-config"
 makedepends="xorgproto libXrender-devel freetype-devel fontconfig-devel"
@@ -15,6 +15,8 @@ checksum=5e8c3c4bc2d4c0a40aef6b4b38ed2fb74301640da29f6528154b5009b1c6dd49
 post_install() {
 	vlicense COPYING
 }
+
+patch_args="-p1"
 
 libXft-devel_package() {
 	depends="${makedepends} ${sourcepkg}>=${version}_${revision}"
