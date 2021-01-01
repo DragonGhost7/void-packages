@@ -1,6 +1,6 @@
 # Template file for 'electrum'
 pkgname=electrum
-version=3.3.8
+version=4.0.9
 revision=2
 build_style=python3-module
 pycompile_module="electrum electrum_gui electrum_plugins"
@@ -19,7 +19,7 @@ license="MIT"
 homepage="https://electrum.org/"
 # patch doesn't apply for PyPI tarball
 distfiles="https://github.com/spesmilo/electrum/archive/${version}.tar.gz"
-checksum=52addd8c0d08d3cc7cc34015efd67f7396fe30a74ac668b8fb77f6b3b927fd8b
+checksum=67e63afe6a9d8944f872500fbf6312a3840f3fa8ebd0c1aadfbba3147d8b3c24
 
 post_install() {
 	sed -i -e 's|electrum %u|electrum|' \
