@@ -1,0 +1,25 @@
+# Template file for 'exodus'
+pkgname=exodus
+version=21.1.7
+revision=1
+wrksrc="Exodus-linux-x64"
+# create_wrksrc="true"
+# build_style="fetch"
+hostmakedepends="unzip"
+makedepends="unzip"
+short_desc="Send, receive & exchange cryptocurrency with ease on the world's leading Desktop, Mobile and Hardware wallets. Bitcoin wallet"
+maintainer="DragonGhost7 <darkiridiumghost@gmail.com>"
+license="custom"
+homepage="https://exodus.io"
+distfiles="https://downloads.exodus.io/releases/exodus-linux-x64-${version}.zip "
+checksum=8a6d33de0db6e4485ba091681c1c1e1de7e7d9000abd819200fedee0ccfa266f
+
+do_install(){
+
+	vmkdir /opt/${pkgname}
+	vmkdir /usr/bin
+	vcopy * /opt/${pkgname}
+	ln -sf /opt/${pkgname}/Exodus ${DESTDIR}/usr/bin/${pkgname}
+	vlicense LICENSE
+
+}
