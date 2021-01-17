@@ -1,0 +1,22 @@
+# Template file for 'python3-etebase'
+pkgname=python3-etebase
+version=0.31.2
+revision=1
+wrksrc="etebase-${version}"
+build_style=python3-module
+# hostmakedepends="python3-setuptools python3-setuptools-rust"
+hostmakedepends="python3-setuptools python3-semanticversion rust cargo make python3-wheel perl"
+short_desc="A Python library for Etebase"
+maintainer="DragonGhost7"
+license="BSD-3-Clause"
+homepage="https://github.com/etesync/etebase-py"
+distfiles="${PYPI_SITE}/e/etebase/etebase-${version}.tar.gz"
+checksum=72c01ad3b99e0668ccda32f7c62c30146cfdf56a6343742fbea577c3c5f40fde
+
+do_build() {
+	python setup.py bdist_wheel
+}
+
+post_install() {
+	vlicense LICENSE
+}
