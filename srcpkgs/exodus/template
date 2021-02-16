@@ -1,6 +1,6 @@
 # Template file for 'exodus'
 pkgname=exodus
-version=21.1.7
+version=21.2.12
 revision=1
 wrksrc="Exodus-linux-x64"
 # create_wrksrc="true"
@@ -12,7 +12,7 @@ maintainer="DragonGhost7 <darkiridiumghost@gmail.com>"
 license="custom"
 homepage="https://exodus.io"
 distfiles="https://downloads.exodus.io/releases/exodus-linux-x64-${version}.zip "
-checksum=8a6d33de0db6e4485ba091681c1c1e1de7e7d9000abd819200fedee0ccfa266f
+checksum=d2ec971c0ae5c3da05f4c98f3299bf8476396ab5e798a3a8c0f2c6fa39341019
 
 do_install(){
 
