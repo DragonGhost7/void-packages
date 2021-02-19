@@ -1,0 +1,16 @@
+# Template file for 'ds4drv'
+pkgname=ds4drv
+version=0.5.1
+revision=1
+build_style=python3-module
+hostmakedepends="python3-setuptools"
+makedepends=""
+depends="bluez python3-pyudev python3-evdev"
+checkdepends="python3-pip python3-pytest"
+short_desc="ds4drv is a Sony DualShock 4 userspace driver for Linux."
+maintainer="DragonGhost7 <darkiridiumghost@gmail.com>"
+license="MIT"
+homepage="https://github.com/chrippa/ds4drv"
+distfiles="https://github.com/chrippa/ds4drv/archive/v${version}.tar.gz"
+checksum=da6841c17af0fc019abfe9e65d3f2a6fab3ced40294dc7391dc3e954e04479f8
+make_check=no
