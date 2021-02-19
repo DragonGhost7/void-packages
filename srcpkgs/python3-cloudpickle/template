@@ -1,0 +1,15 @@
+# Template file for 'python3-cloudpickle'
+pkgname=python3-cloudpickle
+version=1.6.0
+revision=1
+wrksrc="cloudpickle-${version}"
+build_style=python3-module
+hostmakedepends="python3"
+makedepends=""
+depends=""
+short_desc="cloudpickle makes it possible to serialize Python constructs not supported by the default pickle module from the Python standard library."
+maintainer="DragonGhost7 <darkiridiumghost@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/cloudpipe/cloudpickle"
+distfiles="https://files.pythonhosted.org/packages/3b/67/d1ab1b875e3cae4fc96d2372c92e590f220109738e26470b2a68ddf2baec/cloudpickle-${version}.tar.gz"
+checksum=9bc994f9e9447593bd0a45371f0e7ac7333710fcf64a4eb9834bf149f4ef2f32
