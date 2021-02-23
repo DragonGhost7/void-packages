@@ -1,17 +1,30 @@
+From f56c33bce38934c6d280a164002dad08b2592333 Mon Sep 17 00:00:00 2001
+From: DragonGhost7 <darkiridiumghost@gmail.com>
+Date: Tue, 23 Feb 2021 12:57:00 -0500
+Subject: [PATCH] patch
+
+---
+ electrum_ltc/interface.py      | 3 +--
+ electrum_ltc/paymentrequest.py | 3 +--
+ electrum_ltc/util.py           | 3 +--
+ electrum_ltc/x509.py           | 3 +--
+ run_electrum                   | 3 +--
+ 5 files changed, 5 insertions(+), 10 deletions(-)
+
 diff --git a/electrum_ltc/interface.py b/electrum_ltc/interface.py
-index b5eac439c..14bbd7ab9 100644
+index 810727e..4c90e0d 100644
 --- a/electrum_ltc/interface.py
 +++ b/electrum_ltc/interface.py
-@@ -40,7 +40,6 @@ from aiorpcx import RPCSession, Notification, NetAddress
+@@ -42,7 +42,6 @@ from aiorpcx import RPCSession, Notification, NetAddress, NewlineFramer
  from aiorpcx.curio import timeout_after, TaskTimeout
  from aiorpcx.jsonrpc import JSONRPC, CodeMessageError
  from aiorpcx.rawsocket import RSClient
 -import certifi
  
- from .util import ignore_exceptions, log_exceptions, bfh, SilentTaskGroup
- from . import util
-@@ -57,7 +56,7 @@ if TYPE_CHECKING:
-     from .network import Network
+ from .util import (ignore_exceptions, log_exceptions, bfh, SilentTaskGroup, MySocksProxy,
+                    is_integer, is_non_negative_integer, is_hash256_str, is_hex_str,
+@@ -64,7 +63,7 @@ if TYPE_CHECKING:
+     from .simple_config import SimpleConfig
  
  
 -ca_path = certifi.where()
@@ -20,18 +33,18 @@ index b5eac439c..14bbd7ab9 100644
  BUCKET_NAME_OF_ONION_SERVERS = 'onion'
  
 diff --git a/electrum_ltc/paymentrequest.py b/electrum_ltc/paymentrequest.py
-index 149065bf3..9580c8d48 100644
+index 191a22c..de408dd 100644
 --- a/electrum_ltc/paymentrequest.py
 +++ b/electrum_ltc/paymentrequest.py
-@@ -29,7 +29,6 @@ import traceback
- import json
- from typing import Optional
+@@ -29,7 +29,6 @@ from typing import Optional, List, TYPE_CHECKING
+ import asyncio
+ import urllib.parse
  
 -import certifi
- import urllib.parse
  import aiohttp
  
-@@ -54,7 +53,7 @@ _logger = get_logger(__name__)
+ 
+@@ -58,7 +57,7 @@ _logger = get_logger(__name__)
  REQUEST_HEADERS = {'Accept': 'application/litecoin-paymentrequest', 'User-Agent': 'Electrum'}
  ACK_HEADERS = {'Content-Type':'application/litecoin-payment','Accept':'application/litecoin-paymentack','User-Agent':'Electrum'}
  
@@ -41,18 +54,18 @@ index 149065bf3..9580c8d48 100644
  ca_keyID = None
  
 diff --git a/electrum_ltc/util.py b/electrum_ltc/util.py
-index bc69800dc..9c32a195a 100644
+index 52e1b0c..468c744 100644
 --- a/electrum_ltc/util.py
 +++ b/electrum_ltc/util.py
-@@ -44,7 +44,6 @@ import ssl
- import aiohttp
- from aiohttp_socks import SocksConnector, SocksVer
+@@ -51,7 +51,6 @@ import aiohttp
+ from aiohttp_socks import ProxyConnector, ProxyType
+ import aiorpcx
  from aiorpcx import TaskGroup
 -import certifi
+ import dns.resolver
  
  from .i18n import _
- from .logging import get_logger, Logger
-@@ -62,7 +61,7 @@ def inv_dict(d):
+@@ -70,7 +69,7 @@ def inv_dict(d):
      return {v: k for k, v in d.items()}
  
  
@@ -62,10 +75,10 @@ index bc69800dc..9c32a195a 100644
  
  base_units = {'LTC':8, 'mLTC':5, 'uLTC':2, 'sat':0}
 diff --git a/electrum_ltc/x509.py b/electrum_ltc/x509.py
-index c38edc77a..e745e4878 100644
+index 78ae26c..20c025c 100644
 --- a/electrum_ltc/x509.py
 +++ b/electrum_ltc/x509.py
-@@ -343,7 +343,6 @@ def load_certificates(ca_path):
+@@ -341,7 +341,6 @@ def load_certificates(ca_path):
  
  
  if __name__ == "__main__":
@@ -75,23 +88,26 @@ index c38edc77a..e745e4878 100644
 +    ca_path = '/etc/ssl/certs/ca-certificates.crt'
      ca_list, ca_keyID = load_certificates(ca_path)
 diff --git a/run_electrum b/run_electrum
-index 978e5fb2f..e8fc3888c 100755
+index e709310..8b85978 100755
 --- a/run_electrum
 +++ b/run_electrum
-@@ -58,7 +58,6 @@ def check_imports():
+@@ -57,7 +57,6 @@ def check_imports():
+     # pure-python dependencies need to be imported here for pyinstaller
+     try:
          import dns
-         import pyaes
-         import ecdsa
 -        import certifi
          import qrcode
          import google.protobuf
-         import jsonrpclib
-@@ -72,7 +71,7 @@ def check_imports():
+         import aiorpcx
+@@ -69,7 +68,7 @@ def check_imports():
+     from google.protobuf import reflection
      from google.protobuf import descriptor_pb2
-     from jsonrpclib import SimpleJSONRPCServer
      # make sure that certificates are here
 -    assert os.path.exists(certifi.where())
 +    assert os.path.exists('/etc/ssl/certs/ca-certificates.crt')
  
  
  if not is_android:
+-- 
+2.30.1
+
