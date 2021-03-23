@@ -1,0 +1,24 @@
+# Template file for 'key-mapper'
+pkgname=key-mapper
+version=0.7.1
+revision=1
+#archs="i686 x86_64"
+# wrksrc=${version}
+#create_wrksrc=yes
+build_style=python3-module
+patch_args="-p0 --merge --no-backup-if-mismatch"
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends="python3-setuptools git"
+checkdepends="gtk+3 python3-pytest python3-pydbus dbus dbus-glib python3-dbus python3-evdev python3-gobject procps-ng"
+depends="gtk+3 dbus python3-dbus python3-gobject python3-pydbus python3-wheel python3-evdev"
+short_desc="An easy to use tool to change the mapping of your input device buttons."
+maintainer="DragonGhost7 <darkiridiumghost@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/sezanzeb/key-mapper"
+distfiles="https://github.com/sezanzeb/key-mapper/archive/refs/tags/${version}.tar.gz"
+checksum=71c6d2aff3d43083fd9f5c60005a43a4ed6a3a3e51fe48dd9b7a4e04d184ace9
+
