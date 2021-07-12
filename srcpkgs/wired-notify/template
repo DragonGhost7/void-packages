@@ -1,0 +1,15 @@
+# Template file for 'wired-notify'
+pkgname=wired-notify
+version=0.9.0
+revision=1
+archs="i686 x86_64"
+build_style=cargo
+hostmakedepends="pkg-config"
+makedepends="rust cargo libX11-devel dbus-devel libglib-devel cairo-devel pango-devel"
+depends="dbus cairo pango glib libX11"
+short_desc="Lightweight notification daemon with highly customizable layout blocks, written in Rust."
+maintainer="DragonGhost7 <darkiridiumghost@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/Toqozz/wired-notify"
+distfiles="https://github.com/Toqozz/wired-notify/archive/refs/tags/${version}.tar.gz"
+checksum=bdef56e18fdb217b05059ae66fa6b7a53079e0cc105d2ea32258b645ebdfc4ce
