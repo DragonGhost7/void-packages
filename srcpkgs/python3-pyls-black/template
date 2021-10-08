@@ -1,0 +1,21 @@
+# Template file for 'python3-pyls-black'
+pkgname=python3-pyls-black
+version=0.4.7
+revision=1
+wrksrc="pyls-black-${version}"
+build_style=python3-module
+make_check_args="--deselect tests/test_plugin.py::test_entry_point"
+hostmakedepends="python3"
+makedepends="python3-setuptools"
+depends="python3-language-server python3-toml black"
+checkdepends="python3-pytest ${depends}"
+short_desc="Black plugin for the Python Language Server"
+maintainer="DragonGhost7 <darkiridiumghost@gmail.com>"
+license="MIT"
+homepage="https://github.com/rupert/pyls-black"
+distfiles="${homepage}/archive/v${version}/pyls-black-${version}.tar.gz"
+checksum=828ae1cbd1c7eb1bcdc17fe2a480917ff91ddfef91123b5a26f8638a74e0822c
+
+post_install() {
+	vlicense LICENSE
+}
