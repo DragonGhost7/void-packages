@@ -1,0 +1,25 @@
+# Template file for 'python3-qdarkstyle'
+pkgname=python3-qdarkstyle
+version=3.0.2
+revision=1
+wrksrc="QDarkStyle-${version}"
+build_style=python3-module
+hostmakedepends="python3-setuptools"
+depends="python3 python3-QtPy python3-PyQt5"
+checkdepends="python3-pytest python3-pytest-qt python3-pyside2 ${depends}"
+short_desc="QDarkStyle is a dark stylesheet for Python and Qt applications"
+maintainer="DragonGhost7 <darkiridiumghost@gmail.com>"
+license="MIT,CC-BY-4.0"
+homepage="https://qdarkstylesheet.readthedocs.io/"
+distfiles="${PYPI_SITE}/q/qdarkstyle/QDarkStyle-${version}.tar.gz"
+checksum=55d149cf5f40ee297397f1818e091118cefb855a4a9c5c38566c47acd2d8c7ae
+
+do_check() {
+python3 -m qdarkstyle.example --qt_from=pyqt5 --test --offscreen
+sed -i 's|dw_buttons.checkBoxTristate.setCheckState(1)|dw_buttons.checkBoxTristate.setCheckState(QtCore.Qt.Unchecked)|' qdarkstyle/example/__main__.py
+python3 -m qdarkstyle.example --qt_from=pyside2 --test --offscreen
+}
+
+post_install() {
+vlicense LICENSE.rst
+}
