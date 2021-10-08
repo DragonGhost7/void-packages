@@ -1,0 +1,15 @@
+# Template file for 'python3-diff-match-patch'
+pkgname=python3-diff-match-patch
+version=20200713
+revision=1
+wrksrc="diff-match-patch-${version}"
+build_style=python3-module
+hostmakedepends="python3"
+makedepends="python3-setuptools"
+checkdepends="python3-pytest"
+short_desc="Google's Diff Match and Patch library, packaged for modern Python"
+maintainer="DragonGhost7 <darkiridiumghost@gmail.com>"
+license="Apache-2.0"
+homepage="https://github.com/diff-match-patch-python/diff-match-patch"
+distfiles="${PYPI_SITE}/d/diff-match-patch/diff-match-patch-${version}.tar.gz"
+checksum=da6f5a01aa586df23dfc89f3827e1cafbb5420be9d87769eeb079ddfd9477a18
