@@ -1,0 +1,23 @@
+# Template file for 'python3-tinycss2'
+pkgname=python3-tinycss2
+version=1.0.2
+revision=1
+wrksrc="tinycss2-${version}"
+build_style=python3-module
+hostmakedepends="python3-setuptools tar wget python3-pip"
+depends="python3 python3-webencodings"
+checkdepends="python3-pytest python3-pytest-cov ${depends}"
+short_desc="Low-level CSS parser for Python"
+maintainer="DragonGhost7 <darkiridiumghost@gmail.com>"
+license="BSD-3-Clause"
+homepage="https://www.courtbouillon.org/tinycss2"
+distfiles="https://github.com/Kozea/tinycss2/archive/v${version}/tinycss2-${version}.tar.gz"
+checksum=21b9c016d73168c63e5ce20a9fa8e4695c6989c78e89c368c083967c45995def
+
+pre_check() {
+sed -e  '/addopts/,+2d' -i setup.cfg
+}
+
+post_install() {
+vlicense LICENSE
+}
