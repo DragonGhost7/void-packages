@@ -1,0 +1,28 @@
+# Template file for 'python3-xarray'
+pkgname=python3-xarray
+version=0.19.0
+revision=1
+#archs="i686 x86_64"
+wrksrc="xarray-${version}"
+#create_wrksrc=yes
+build_style=python3-module
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends="python3-setuptools python3-setuptools_scm"
+depends="python3-numpy python3-pandas python3-Bottleneck python3-matplotlib python3-scipy  python3-seaborn"
+checkdepends="python3-pytest python3-boto3 python3-hypothesis python3-lxml ${depends}"
+short_desc="N-D labeled arrays and datasets in Python"
+maintainer="DragonGhost7 <darkiridiumghost@gmail.com>"
+license="Apache-2.0"
+homepage="https://github.com/pydata/xarray"
+distfiles="${PYPI_SITE}/x/xarray/xarray-${version}.tar.gz"
+checksum=3a365ce09127fc841ba88baa63f37ca61376ffe389a6c5e66d52f2c88c23a62b
+
+pre_check() {
+	cd xarray/tests
+	rm test_cftime_offsets.py test_cftimeindex.py test_cftimeindex_resample.py test_dask.py test_distributed.py
+# optional check dependencies, void linux doesnt have them
+	}
