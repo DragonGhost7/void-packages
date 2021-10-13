@@ -16,6 +16,15 @@ changelog="https://raw.githubusercontent.com/jamesturk/jellyfish/main/docs/chang
 distfiles="${PYPI_SITE}/j/jellyfish/jellyfish-${version}.tar.gz"
 checksum=90d25e8f5971ebbcf56f216ff5bb65d6466572b78908c88c47ab588d4ea436c2
 
+pre_check() {
+	sed -e 's/envlist = py37,py38,py39,flake8/envlist = ,py310/' -i tox.ini
+#void linux supports currently python3.10
+}
+do_check() {
+	cd jellyfish
+	tox
+}
+
 post_install() {
 	vlicense LICENSE
 }
