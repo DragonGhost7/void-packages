@@ -1,0 +1,25 @@
+# Template file for 'python3-spyder-kernels'
+pkgname=python3-spyder-kernels
+version=2.2.0
+revision=1
+wrksrc="spyder-kernels-${version}"
+build_style=python3-module
+hostmakedepends="python3-setuptools"
+makedepends="python3"
+depends="python3-cloudpickle python3-ipython_ipykernel python3-jupyter_client python3-pyzmq python3-wurlitzer"
+checkdepends="python3-cloudpickle python3-Cython python3-flaky python3-matplotlib python3-mock python3-numpy python3-pandas python3-Pillow python3-pytest  python3-scipy python3-xarray ${depends}"
+short_desc="Jupyter Kernels for the Spyder console"
+maintainer="DragonGhost7 <darkiridiumghost@gmail.com>"
+license="MIT"
+homepage="https://github.com/spyder-ide/spyder-kernels/"
+distfiles="${homepage}/archive/v${version}/${pkgname}-${version}.tar.gz"
+checksum=d82b216b731743f0f63ad5d74a95b49d0c8d101dd33453384cac4c38ae8bf8e7
+
+do_check() {
+ pytest --deselect spyder_kernels/console/tests/test_console_kernel.py::test_dask_multiprocessing
+# void linux doesnt have dask so no test
+}
+
+post_install() {
+	vlicense LICENSE.txt
+}
