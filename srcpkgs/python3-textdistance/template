@@ -1,0 +1,35 @@
+# Template file for 'python3-textdistance'
+pkgname=python3-textdistance
+version=4.2.1
+revision=1
+#archs="i686 x86_64"
+wrksrc="textdistance-v.${version}"
+#create_wrksrc=yes
+build_style=python3-module
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends="python3-setuptools"
+depends="python3 python3-abydos python3-hypothesis python3-numpy python3-Levenshtein python3-pyxdameraulevenshtein python3-jellyfish"
+checkdepends="python3-pytest python3-isort python3-parsing python3-hypothesis python3-numpy python3-Levenshtein python3-pyxdameraulevenshtein "
+short_desc="Compute distance between sequences"
+maintainer="DragonGhost7 <darkiridiumghost@gmail.com>"
+license="MIT"
+homepage="https://github.com/life4/textdistance"
+distfiles="${homepage}/archive/refs/tags/v.${version}.tar.gz"
+checksum=2f475938edbef7faee50deeb000c81877e1165c29ff091b7c871dbcd0a244ca4
+
+pre_check() {
+	sed -e '/addopts/d' -i setup.cfg
+}
+
+do_check() {
+	# pytest --deselect tests/test_external.py
+	pytest -m 'not external'  tests/
+}
+
+post_install() {
+	vlicense LICENSE
+}
