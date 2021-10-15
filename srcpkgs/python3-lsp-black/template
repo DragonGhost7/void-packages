@@ -1,0 +1,22 @@
+# Template file for 'python3-lsp-black'
+pkgname=python3-lsp-black
+version=1.0.0
+revision=1
+#archs="i686 x86_64"
+wrksrc="python-lsp-black-${version}"
+#create_wrksrc=yes
+build_style=python3-module
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends="python3-setuptools"
+depends="python3 python3-lsp-server black python3-toml"
+checkdepends="python3-pytest ${depends}"
+short_desc="Black plugin for the Python LSP Server"
+maintainer="DragonGhost7 <darkiridiumghost@gmail.com>"
+license="MIT"
+homepage="https://github.com/python-lsp/python-lsp-black"
+distfiles="${homepage}/archive/refs/tags/v${version}.tar.gz"
+checksum=76e23e09e342b572c94b42a9d8c3cf10c3a1b1aed9969bd6817cb085e214432e
