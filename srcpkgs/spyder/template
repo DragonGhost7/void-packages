@@ -1,0 +1,38 @@
+# Template file for 'spyder'
+pkgname=spyder
+version=5.2.1
+revision=1
+#archs="i686 x86_64"
+#wrksrc=
+#create_wrksrc=yes
+build_style=python3-module
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends="python3-setuptools"
+makedepends="python3-Sphinx"
+depends="python3-Sphinx python3-rtree python3-atomicwrites python3-chardet python3-cloudpickle python3-cookiecutter python3-diff-match-patch python3-intervaltree python3-ipython python3-jedi python3-jsonschema python3-keyring python3-jupyter_nbconvert python3-numpydoc python3-parso  python3-pexpect  python3-pickleshare python3-psutil python3-Pygments python3-pylint python3-PyQt5 python3-PyQt5-webengine qt5-webkit python3-language-server python3-pyls-black python3-pyls-spyder python3-xdg python3-pyzmq python3-qdarkstyle python3-qstylizer python3-qtawesome python3-jupyter_qtconsole python3-QtPy python3-spyder-kernels python3-textdistance python3-three-merge python3-watchdog autopep8 flake8 python3-pycodestyle python3-pydocstyle python3-pyflakes python3-rope python3-yapf python3-Cython python3-matplotlib python3-numpy python3-pandas python3-scipy python3-sympy"
+short_desc="The Scientific Python Development Environment"
+maintainer="DragonGhost7 <darkiridiumghost@gmail.com>"
+license="MIT"
+homepage="https://www.spyder-ide.org/"
+distfiles="https://github.com/spyder-ide/${pkgname}/archive/v${version}/${pkgname}-${version}.tar.gz"
+checksum=dc8a50be08afc8c02480fd6a07a29101784294dfa19a63ab328287859f9e844c
+make_check=no
+
+post_extract() {
+	sed "s|JEDI_REQVER = '=|JEDI_REQVER = '>=|" -i spyder/dependencies.py
+		sed "s|PARSO_REQVER = '=|PARSO_REQVER = '>=|" -i spyder/dependencies.py
+		sed "s|QDARKSTYLE_REQVER = '=|QDARKSTYLE_REQVER = '>=|" -i spyder/dependencies.py
+		sed "s|jedi==|jedi>=|" -i setup.py
+		sed "s|parso==|parso>=|" -i setup.py
+		sed "s|qdarkstyle==|qdarkstyle>=|" -i setup.py
+		sed "s|'pylint>=2.5.0,<2.10.0'|'pylint<=2.11.1'|" -i setup.py
+		# Allow a newer qt version
+		sed "s|'pyqt5<5.13'|'pyqt5'|" -i setup.py
+		sed "s|'pyqtwebengine<5.13'|'pyqtwebengine'|" -i setup.py
+# https://github.com/spyder-ide/spyder/pull/15100
+		sed "s|SPYDER_KERNELS_REQVER = '>=2.0.1,<2.1.0'|SPYDER_KERNELS_REQVER = '>=2.0.1;<3.0.0'|" -i spyder/dependencies.py
+}
