@@ -1,0 +1,32 @@
+# Template file for 'gitkraken'
+pkgname=gitkraken
+version=8.1.0
+revision=1
+archs="x86_64"
+wrksrc=${pkgname}
+# create_wrksrc=yes
+# build_style=gnu-configure
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+depends="gtk+3 libsecret libxkbfile nss git-lfs gnome-keyring"
+short_desc="The intuitive, fast, and beautiful cross-platform Git client"
+maintainer="DragonGhost7 <darkiridiumghost@gmail.com>"
+license="custom: Axosoft"
+homepage="https://www.gitkraken.com/"
+distfiles="https://release.axocdn.com/linux/GitKraken-v${version}.tar.gz"
+checksum=4b9795d8e6480268c40487da176472b9124e3cb26e5730cd44e7f30836615fa2
+repository=nonfree
+noshlibprovides=yes
+noverifyrdeps=yes
+restricted=yes
+nopie=yes
+
+do_install() {
+	vmkdir /opt/gitkraken
+	vcopy "*" /opt/gitkraken/
+	vinstall ${FILESDIR}/GitKraken.desktop 644 /usr/share/applications/
+	vinstall ${FILESDIR}/gitkraken.sh 755 /usr/bin/ gitkraken
+}
