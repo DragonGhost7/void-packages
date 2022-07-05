@@ -1,0 +1,25 @@
+# Template file for 'python3-dlib'
+pkgname=python3-dlib
+version=19.24
+revision=1
+#archs="i686 x86_64"
+wrksrc="dlib-${version}"
+#create_wrksrc=yes
+build_style=python3-module
+#configure_args=""
+# make_build_args="--set CUDA_HOST_COMPILER=/usr/local/cuda-11.7/bin/gcc --set CUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda11.7/ --set CUDA_HOST_COMPILER=/usr/local/cuda-11.7/bin/gcc --set CUDA_NVCC_EXECUTABLE=/usr/local/cuda/bin/nvcc --set CUDA_INCLUDE_DIR=/usr/local/cuda/include/ --set CUDA_CUDART_LIBRARY=/usr/local/cuda-11.7/targets/x86_64-linux/lib/libcudart.so"
+# make_build_args="--set CUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda/"
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends="python3-setuptools boost cmake sqlite python3-pip"
+makedepends="cblas-devel giflib-devel lapack-devel libX11-devel pkg-config python3-devel"
+depends="cblas giflib lapack libjpeg-turbo libpng libX11"
+short_desc="Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques."
+maintainer="DragonGhost7 <darkiridiumghost@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="http://www.dlib.net/"
+#changelog=""
+distfiles="http://www.dlib.net/files/dlib-${version}.tar.bz2"
+checksum=28fdd1490c4d0bb73bd65dad64782dd55c23ea00647f5654d2227b7d30b784c4
+make_check=no
