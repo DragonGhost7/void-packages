@@ -1,0 +1,17 @@
+# Template file for 'swhkd'
+pkgname=swhkd
+version=1.2.0
+revision=1
+build_style=cargo
+makedepends="scdoc"
+depends="polkit"
+short_desc="A display server independent hotkey daemon inspired by sxhkd"
+maintainer="DragonGhost7 <darkiridiumghost@gmail.com>"
+license="BSD-2-Clause"
+homepage="https://github.com/waycrate/swhkd"
+distfiles="https://github.com/waycrate/swhkd/archive/refs/tags/${version}.tar.gz"
+checksum=fc47365ccfb881c6baac9ee4cd2e820565062609b05bb20938c02526046bd6d2
+
+post_install(){
+	vinstall $FILESDIR/com.github.swhkd.pkexec.policy 644 usr/share/polkit-1/actions
+}
