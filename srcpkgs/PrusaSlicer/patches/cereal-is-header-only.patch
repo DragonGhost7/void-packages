@@ -6,7 +6,7 @@ Index: PrusaSlicer-2.4.2/src/libslic3r/CMakeLists.txt
  target_link_libraries(libslic3r
      libnest2d
      admesh
--    cereal
+-    libcereal
      libigl
      miniz
      boost_libs
@@ -18,7 +18,7 @@ Index: PrusaSlicer-2.4.2/src/CMakeLists.txt
      set_target_properties(PrusaSlicer PROPERTIES OUTPUT_NAME "prusa-slicer")
  endif ()
  
--target_link_libraries(PrusaSlicer libslic3r cereal)
+-target_link_libraries(PrusaSlicer libslic3r libcereal)
 +target_link_libraries(PrusaSlicer libslic3r)
 
  if (APPLE)
@@ -31,7 +31,7 @@ Index: PrusaSlicer-2.4.2/src/slic3r/CMakeLists.txt
  
  encoding_check(libslic3r_gui)
  
--target_link_libraries(libslic3r_gui libslic3r avrdude cereal imgui GLEW::GLEW OpenGL::GL hidapi libcurl ${wxWidgets_LIBRARIES})
+-target_link_libraries(libslic3r_gui libslic3r avrdude libcereal imgui GLEW::GLEW OpenGL::GL hidapi libcurl ${wxWidgets_LIBRARIES} NanoSVG::nanosvg NanoSVG::nanosvgrast)
 +target_link_libraries(libslic3r_gui libslic3r avrdude imgui GLEW::GLEW OpenGL::GL hidapi libcurl ${wxWidgets_LIBRARIES})
  
  if (MSVC)

@@ -45,13 +45,6 @@
  #include "libslic3r/Config.hpp"
  
 +#include <fstream>
+ #include <boost/nowide/fstream.hpp>
  #include <boost/filesystem.hpp>
  #include <boost/log/trivial.hpp>
- #include <boost/dll/runtime_symbol_info.hpp>
-@@ -503,4 +504,4 @@ DesktopIntegrationDialog::~DesktopIntegr
- 
- } // namespace GUI
- } // namespace Slic3r
--#endif // __linux__
-\ No newline at end of file
-+#endif // __linux__
