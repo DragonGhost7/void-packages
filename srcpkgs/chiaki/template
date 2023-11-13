@@ -1,6 +1,6 @@
 # Template file for 'chiaki'
 pkgname=chiaki
-version=2.1.1
+version=2.2.0
 revision=1
 archs="x86_64* i686*"
 wrksrc="${pkgname}"
@@ -13,7 +13,7 @@ maintainer="DragonGhost7 <darkiridiumghost@gmail.com>"
 license="AGPL-3.0-or-later"
 homepage="https://git.sr.ht/~thestr4ng3r/chiaki/"
 distfiles="https://git.sr.ht/~thestr4ng3r/chiaki/refs/download/v${version}/chiaki-v${version}-src.tar.gz"
-checksum=75115a19f197d19fc417e863583681e95e412364427aa394f2c0eded54343710
+checksum=f406894f3c2d751961d58c1e27e81f1313a3fed3d1a33d3bf4d6092ce6575cf8
 
 post_install() {
 	vlicense LICENSES/AGPL-3.0-only-OpenSSL.txt
