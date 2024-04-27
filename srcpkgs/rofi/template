@@ -1,24 +1,20 @@
 # Template file for 'rofi'
 pkgname=rofi
 version=1.7.5
-revision=1
-build_style=gnu-configure
+revision=2
+build_style=meson
 hostmakedepends="autoconf automake flex glib-devel pkg-config which"
 makedepends="libXinerama-devel librsvg-devel
  libxkbcommon-devel pango-devel startup-notification-devel
- xcb-util-wm-devel xcb-util-xrm-devel xcb-util-cursor-devel"
+ xcb-util-wm-devel xcb-util-xrm-devel xcb-util-cursor-devel
+ wayland-devel wayland-protocols"
 short_desc="Window switcher, run dialog and dmenu replacement"
 maintainer="classabbyamp <void@placeviolette.net>"
 license="MIT"
-homepage="https://github.com/davatorium/rofi"
-distfiles="https://github.com/davatorium/rofi/releases/download/${version}/rofi-${version}.tar.xz"
-checksum=caffcf66d165cb32b748c1db7f229d6d75da58c1685eb17455f65c60e8220c8d
+homepage="https://github.com/lbonn/rofi"
+distfiles="https://github.com/lbonn/rofi/archive/refs/tags/${version}+wayland3.tar.gz"
+checksum=61f0a780c58dcde296aeaa41ad51937eb2daa7190811df768897bd6cea4a63de
 
-if [ "$XBPS_CHECK_PKGS" ]; then
-	makedepends+=" check-devel"
-else
-	configure_args+=" --disable-check"
-fi
 
 post_install() {
 	vlicense COPYING
